@@ -1,5 +1,5 @@
 // import React from 'react';
-import { initializeBoard } from '../lib/utils/TilePlacementHelpers';
+import { initializeBoard } from '../lib/utils/tilePlacementHelpers';
 
 export default function Board() {
   const board = initializeBoard();
@@ -24,7 +24,7 @@ export default function Board() {
   };
 
   return (
-    <div className='grid grid-cols-4 border-[#333333] border-4'>
+    <div className="grid grid-cols-4 border-[#333333] border-4">
       {board.map((tile, index) => (
         <div
           key={index}
