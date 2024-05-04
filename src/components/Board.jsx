@@ -25,18 +25,12 @@ export default function Board() {
   // };
 
   return (
-    <div className="grid grid-cols-4 border-[#333333] border-4">
+    <div className="grid grid-cols-4">
       {board.map((tile, index) => (
-        // <div
-        //   key={index}
-        //   className="bg-[url('tileUrls[tile]')] text-center"
-        // >
         <Tile
           key={index}
           tile={tile}
         />
-        // <img src={tileUrls[tile]} />
-        // </div>
       ))}
     </div>
   );

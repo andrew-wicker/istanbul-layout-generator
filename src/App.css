@@ -1,5 +1,7 @@
 #istanbul {
   background-image: url('/images/background.jpg');
+  background-color: rgba(56, 67, 89, 0.2);
+  background-blend-mode: lighten;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
