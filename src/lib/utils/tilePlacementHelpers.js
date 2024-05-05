@@ -22,14 +22,40 @@ export const initializeBoard = () => {
   const board = new Array(16).fill(null);
   const middleIndexes = [5, 6, 9, 10];
   const cornerIndexes = [0, 3, 12, 15];
-  const firstTurnTiles = ['Fabric Warehouse', 'Spice Warehouse', 'Fruit Warehouse', 'Post Office', 'Police Station'];
-  const allTiles = ['Wainwright', 'Fabric Warehouse', 'Spice Warehouse', 'Fruit Warehouse', 'Post Office', 'Caravansary', 'Fountain', 'Black Market', 'Tea House', 'Large Market', 'Small Market', 'Police Station', "Sultan's Palace", 'Small Mosque', 'Great Mosque', 'Gemstone Dealer'];
+  const firstTurnTiles = [
+    'Fabric Warehouse',
+    'Spice Warehouse',
+    'Fruit Warehouse',
+    'Post Office',
+    'Police Station',
+  ];
+  const allTiles = [
+    'Wainwright',
+    'Fabric Warehouse',
+    'Spice Warehouse',
+    'Fruit Warehouse',
+    'Post Office',
+    'Caravansary',
+    'Fountain',
+    'Black Market',
+    'Tea House',
+    'Large Market',
+    'Small Market',
+    'Police Station',
+    "Sultan's Palace",
+    'Small Mosque',
+    'Great Mosque',
+    'Gemstone Dealer',
+  ];
 
   // Place Fountain and Caravansary
   if (Array.isArray(middleIndexes)) {
     shuffleArray(middleIndexes);
   } else {
-    console.error('Expected array, received: ', middleIndexes);
+    console.error(
+      'Fountain, Caravansary: Expected array, received: ',
+      middleIndexes
+    );
   }
 
   board[middleIndexes.pop()] = 'Fountain';
@@ -39,7 +65,7 @@ export const initializeBoard = () => {
   if (Array.isArray(cornerIndexes)) {
     shuffleArray(cornerIndexes);
   } else {
-    console.error('Expected array, received: ', cornerIndexes);
+    console.error('Tea House: Expected array, received: ', cornerIndexes);
   }
   // shuffleArray(cornerIndexes);
   const teaHouseIndex = cornerIndexes.pop();
@@ -50,7 +76,10 @@ export const initializeBoard = () => {
   if (Array.isArray(distantIndexes)) {
     shuffleArray(distantIndexes);
   } else {
-    console.error('Expected array, received: ', distantIndexes);
+    console.error(
+      'Black Mkt, Gemstone: Expected array, received: ',
+      distantIndexes
+    );
   }
   // shuffleArray(distantIndexes);
   board[distantIndexes.pop()] = 'Black Market';
@@ -65,17 +94,26 @@ export const initializeBoard = () => {
     10: [2, 5, 6, 7, 8, 9, 11, 13, 14, 15],
   };
   const firstTurnReachable = reachableIndexes[fountainIndex];
+  console.log('firstTurnReachable: ', firstTurnReachable);
+  console.log('reachableIndexes: ', reachableIndexes);
+  console.log('fountain index: ', fountainIndex);
   // ! -------------------------------------------------------
   if (Array.isArray(firstTurnReachable)) {
     shuffleArray(firstTurnReachable);
   } else {
-    console.error('Expected array, received: ', firstTurnReachable);
+    console.error(
+      'firstTurnReachable: Expected array, received: ',
+      firstTurnReachable
+    );
   }
   // shuffleArray(firstTurnReachable);
   if (Array.isArray(firstTurnTiles)) {
     shuffleArray(firstTurnTiles);
   } else {
-    console.error('Expected array, received: ', firstTurnTiles);
+    console.error(
+      'First Turn Tiles: Expected array, received: ',
+      firstTurnTiles
+    );
   }
   // shuffleArray(firstTurnTiles);
 
@@ -91,7 +129,7 @@ export const initializeBoard = () => {
   if (Array.isArray(tilesRemaining)) {
     shuffleArray(tilesRemaining);
   } else {
-    console.error('Expected array, received: ', tilesRemaining);
+    console.error('tilesRemaining: Expected array, received: ', tilesRemaining);
   }
   // shuffleArray(tilesRemaining);
 

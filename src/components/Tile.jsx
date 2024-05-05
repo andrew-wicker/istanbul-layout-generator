@@ -25,10 +25,10 @@ export default function Tile({ tile }) {
   console.log('tile url is: ', tileUrls[tile]);
 
   return (
-    <div className=" p-1 text-center">
+    <div className=" p-1 text-center transition-transform duration-300 ease-in-out transform hover:scale-125 hover:z-[100] ">
       <img
         src={tileUrls[tile]}
-        className="rounded-2xl"
+        className="rounded-xl hover:border-4 hover:border-white"
       />
     </div>
   );
