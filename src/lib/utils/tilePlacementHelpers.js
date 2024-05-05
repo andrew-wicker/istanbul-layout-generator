@@ -57,9 +57,12 @@ export const initializeBoard = () => {
       middleIndexes
     );
   }
+  console.log('before middleIndexes.pop: ', middleIndexes);
 
   board[middleIndexes.pop()] = 'Fountain';
   board[middleIndexes.pop()] = 'Caravansary';
+
+  console.log('after middleIndexes.pop: ', middleIndexes);
 
   // Place Tea House
   if (Array.isArray(cornerIndexes)) {
@@ -86,6 +89,11 @@ export const initializeBoard = () => {
   board[distantIndexes.pop()] = 'Gemstone Dealer';
 
   const fountainIndex = board.indexOf('Fountain');
+  if (fountainIndex === -1) {
+    console.error('Fountain not found in board: ', board);
+    return;
+  }
+
   // ! Brute force of indexes reachable on first turn
   const reachableIndexes = {
     5: [0, 1, 2, 4, 6, 7, 8, 9, 10, 13],
