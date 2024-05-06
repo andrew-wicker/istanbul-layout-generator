@@ -3,7 +3,7 @@ import { initializeBoard } from '../lib/utils/tilePlacementHelpers';
 import Tile from './Tile';
 
 export default function Board() {
-  const board = initializeBoard();
+  const [board, setBoard] = useState(() => initializeBoard());
 
   const [hoveredTile, setHoveredTile] = useState(null);
 

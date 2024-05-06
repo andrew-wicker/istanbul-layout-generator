@@ -60,6 +60,7 @@ export const initializeBoard = () => {
   console.log('before middleIndexes.pop: ', middleIndexes);
 
   board[middleIndexes.pop()] = 'Fountain';
+  console.log('board after assign fountain: ', board);
   board[middleIndexes.pop()] = 'Caravansary';
 
   console.log('after middleIndexes.pop: ', middleIndexes);

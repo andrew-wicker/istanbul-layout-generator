@@ -21,9 +21,6 @@ export default function Tile({ tile }) {
     'Gemstone Dealer': '/tiles/cropped/16-gemstone-dealer.jpg',
   };
 
-  console.log('tile is: ', tile);
-  console.log('tile url is: ', tileUrls[tile]);
-
   return (
     <div className=" p-1 text-center transition-transform duration-300 ease-in-out transform hover:scale-125 hover:z-[100] ">
       <img
