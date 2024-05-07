@@ -49,52 +49,27 @@ export const initializeBoard = () => {
   ];
 
   // Place Fountain and Caravansary
-  if (Array.isArray(middleIndexes)) {
-    shuffleArray(middleIndexes);
-  } else {
-    console.error(
-      'Fountain, Caravansary: Expected array, received: ',
-      middleIndexes
-    );
-  }
-  console.log('before middleIndexes.pop: ', middleIndexes);
-
-  board[middleIndexes.pop()] = 'Fountain';
-  console.log('board after assign fountain: ', board);
-  board[middleIndexes.pop()] = 'Caravansary';
-
-  console.log('after middleIndexes.pop: ', middleIndexes);
+  shuffleArray(middleIndexes);
+  let index = middleIndexes.pop();
+  if (board[index] === null) board[index] = 'Fountain';
+  index = middleIndexes.pop();
+  if (board[index] === null) board[index] = 'Caravansary';
 
   // Place Tea House
-  if (Array.isArray(cornerIndexes)) {
-    shuffleArray(cornerIndexes);
-  } else {
-    console.error('Tea House: Expected array, received: ', cornerIndexes);
-  }
-  // shuffleArray(cornerIndexes);
-  const teaHouseIndex = cornerIndexes.pop();
-  board[teaHouseIndex] = 'Tea House';
+  shuffleArray(cornerIndexes);
+  index = cornerIndexes.pop();
+  if (board[index] === null) board[index] = 'Tea House';
 
   // Assign Black Market and Gemstone Dealer
+  const teaHouseIndex = board.indexOf('Tea House');
   const distantIndexes = getDistantIndexes(teaHouseIndex, 3);
-  if (Array.isArray(distantIndexes)) {
-    shuffleArray(distantIndexes);
-  } else {
-    console.error(
-      'Black Mkt, Gemstone: Expected array, received: ',
-      distantIndexes
-    );
-  }
-  // shuffleArray(distantIndexes);
-  board[distantIndexes.pop()] = 'Black Market';
-  board[distantIndexes.pop()] = 'Gemstone Dealer';
+  shuffleArray(distantIndexes);
+  index = distantIndexes.pop();
+  if (board[index] === null) board[index] = 'Black Market';
+  index = distantIndexes.pop();
+  if (board[index] === null) board[index] = 'Gemstone Dealer';
 
   const fountainIndex = board.indexOf('Fountain');
-  if (fountainIndex === -1) {
-    console.error('Fountain not found in board: ', board);
-    return;
-  }
-
   // ! Brute force of indexes reachable on first turn
   const reachableIndexes = {
     5: [0, 1, 2, 4, 6, 7, 8, 9, 10, 13],
@@ -102,50 +77,26 @@ export const initializeBoard = () => {
     9: [1, 4, 5, 6, 8, 10, 11, 12, 13, 14],
     10: [2, 5, 6, 7, 8, 9, 11, 13, 14, 15],
   };
-  const firstTurnReachable = reachableIndexes[fountainIndex];
-  console.log('firstTurnReachable: ', firstTurnReachable);
-  console.log('reachableIndexes: ', reachableIndexes);
-  console.log('fountain index: ', fountainIndex);
+  const firstTurnReachable = reachableIndexes[fountainIndex] || [];
+
   // ! -------------------------------------------------------
-  if (Array.isArray(firstTurnReachable)) {
-    shuffleArray(firstTurnReachable);
-  } else {
-    console.error(
-      'firstTurnReachable: Expected array, received: ',
-      firstTurnReachable
-    );
-  }
-  // shuffleArray(firstTurnReachable);
-  if (Array.isArray(firstTurnTiles)) {
-    shuffleArray(firstTurnTiles);
-  } else {
-    console.error(
-      'First Turn Tiles: Expected array, received: ',
-      firstTurnTiles
-    );
-  }
-  // shuffleArray(firstTurnTiles);
+  shuffleArray(firstTurnReachable);
+
+  shuffleArray(firstTurnTiles);
 
   let tilesPlaced = 0;
   for (let i = 0; i < firstTurnReachable.length && tilesPlaced < 4; i++) {
-    let position = firstTurnReachable[i];
-    if (board[position] === null && position !== middleIndexes[0]) {
-      board[position] = firstTurnTiles[tilesPlaced++];
+    index = firstTurnReachable[i];
+    if (board[index] === null && !middleIndexes.includes(index)) {
+      board[index] = firstTurnTiles[tilesPlaced++];
     }
   }
 
   const tilesRemaining = allTiles.filter((tile) => !board.includes(tile));
-  if (Array.isArray(tilesRemaining)) {
-    shuffleArray(tilesRemaining);
-  } else {
-    console.error('tilesRemaining: Expected array, received: ', tilesRemaining);
-  }
-  // shuffleArray(tilesRemaining);
-
-  let tileIndex = 0;
+  shuffleArray(tilesRemaining);
   for (let i = 0; i < board.length; i++) {
     if (board[i] === null) {
-      board[i] = tilesRemaining[tileIndex++];
+      board[i] = tilesRemaining.shift();
     }
   }
 

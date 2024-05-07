@@ -19,6 +19,7 @@ export default function Tile({ tile }) {
     'Small Mosque': '/tiles/cropped/14-small-mosque.jpg',
     'Great Mosque': '/tiles/cropped/15-great-mosque.jpg',
     'Gemstone Dealer': '/tiles/cropped/16-gemstone-dealer.jpg',
+    blank: '/tiles/cropped/00-blank.jpg',
   };
 
   return (

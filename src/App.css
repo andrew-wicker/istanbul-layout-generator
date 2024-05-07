@@ -1,6 +1,6 @@
 #istanbul {
-  background-image: url('/images/background.jpg');
-  background-color: rgba(56, 67, 89, 0.2);
+  /* background-image: url('/images/background.jpg'); */
+  background-color: rgb(255, 255, 255);
   background-blend-mode: lighten;
   background-size: cover;
   background-position: center;
@@ -9,7 +9,7 @@
 }
 
 #app {
-  max-width: 1280px;
+  /* max-width: 80vw; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
