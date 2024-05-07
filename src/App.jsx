@@ -49,20 +49,54 @@ function App() {
     }
   };
 
+  // return (
+  //   <div
+  //     id="istanbul"
+  //     className="bg-gradient-to-br from-slate-700 to-black"
+  //   >
+  //     <div
+  //       id="app"
+  //       className="flex"
+  //     >
+  //       <div className="left-hand-panel flex flex-col items-center mt-4 mr-6 w-1/5">
+  //         <img
+  //           className="w-4/5"
+  //           src="/images/istanbulTitle.png"
+  //         />
+  //         <h1 className="text-xxl font-bold text-center mb-8 text-[#ffffff] mt-8">
+  //           Map Generator
+  //         </h1>
+  //         <ButtonBar
+  //           onRegen={tournamentLayout}
+  //           onShortPaths={shortPathsLayout}
+  //           onLongPaths={longPathsLayout}
+  //         />
+  //         <Explainer />
+  //       </div>
+  //       <div className="board-container flex w-4/5">{renderBoard()}</div>
+  //     </div>
+  //     <Footer />
+  //   </div>
+  // );
   return (
-    <div id="istanbul">
+    <div
+      id="app"
+      className="h-screen max-w-fit min-w-full min-h-full p-8 m-0 bg-gradient-to-br from-gray-800 to-zinc-100"
+    >
       <div
-        id="app"
-        className="flex bg-gradient-to-br from-slate-700 to-black"
+        id="top-bar"
+        className="p-2 ml-4"
       >
-        <div className="left-hand-panel flex flex-col items-center mt-4 w-1/5">
-          <img
-            className="w-4/5"
-            src="/images/istanbulTitle.png"
-          />
-          <h1 className="text-xxl font-bold text-center mb-8 text-[#ffffff] mt-8">
-            Map Generator
-          </h1>
+        <img
+          src="/images/istanbulTitle.png"
+          className="w-56 ml-6"
+        />
+      </div>
+      <div className="flex">
+        <div
+          id="left-side-panel"
+          className="flex flex-col w-1/5 p-8"
+        >
           <ButtonBar
             onRegen={tournamentLayout}
             onShortPaths={shortPathsLayout}
