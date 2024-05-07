@@ -24,7 +24,7 @@ export default function Board({ boardType = null }) {
   }, [boardType]);
 
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-4 max-h-full">
       {board.map((tile, index) => (
         <div
           key={index}

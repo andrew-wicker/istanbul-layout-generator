@@ -81,7 +81,7 @@ function App() {
   return (
     <div
       id="app"
-      className="h-screen max-w-fit min-w-full min-h-full p-8 m-0 bg-gradient-to-br from-gray-800 to-zinc-100"
+      className=" max-w-fit min-w-full min-h-full p-8 m-0 bg-gradient-to-br from-gray-500 to-zinc-300"
     >
       <div
         id="top-bar"
