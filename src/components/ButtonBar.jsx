@@ -6,19 +6,19 @@ export default function ButtonBar({ onRegen, onShortPaths, onLongPaths }) {
       <div className="button-bar flex flex-col justify-around text-lg">
         <button
           onClick={onRegen}
-          className="mb-8 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
+          className="mb-4 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
         >
           Regenerate Layout
         </button>
         <button
           onClick={onShortPaths}
-          className="mb-8 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
+          className="mb-4 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
         >
           Short Paths Layout
         </button>
         <button
           onClick={onLongPaths}
-          className="mb-8 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
+          className="mb-4 px-6 py-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
         >
           Long Paths Layout
         </button>

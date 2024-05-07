@@ -4,6 +4,7 @@ import ButtonBar from './components/ButtonBar';
 import './App.css';
 import BlankBoard from './components/BlankBoard';
 import Footer from './components/Footer';
+import Explainer from './components/Explainer';
 
 function App() {
   const [boardType, setBoardType] = useState('blank');
@@ -67,6 +68,7 @@ function App() {
             onShortPaths={shortPathsLayout}
             onLongPaths={longPathsLayout}
           />
+          <Explainer />
         </div>
         <div className="board-container flex w-4/5">{renderBoard()}</div>
       </div>
