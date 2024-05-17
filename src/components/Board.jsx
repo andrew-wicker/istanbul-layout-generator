@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { initializeBoard } from '../lib/utils/tilePlacementHelpers';
 import { shortPaths, longPaths } from '../lib/presetLayout';
-import Tile from './Tile';
+import AnimatedTile from './AnimatedTile/AnimatedTile';
 
 export default function Board({ boardType = null }) {
   const [board, setBoard] = useState([]);
-
-  const [hoveredTile, setHoveredTile] = useState(null);
+  const [flippedTiles, setFlippedTiles] = useState([]);
 
   useEffect(() => {
     switch (boardType) {
@@ -23,20 +22,29 @@ export default function Board({ boardType = null }) {
     }
   }, [boardType]);
 
+  useEffect(() => {
+    const flipTiles = () => {
+      let tileIndexes = Array.from({ length: board.length }, (_, i) => i);
+      tileIndexes = tileIndexes.sort(() => Math.random() - 0.5);
+
+      tileIndexes.forEach((index, i) => {
+        setTimeout(() => {
+          setFlippedTiles((prev) => [...prev, index]);
+        }, i * 100);
+      });
+    };
+
+    flipTiles();
+  }, [board]);
+
   return (
-    <div className="grid grid-cols-4 max-h-full">
+    <div className="grid grid-cols-4 max-h-full gap-4">
       {board.map((tile, index) => (
-        <div
-          key={index}
-          onMouseEnter={() => setHoveredTile(tile)}
-          onMouseLeave={() => setHoveredTile(null)}
-          className={`transition-all duration-300 ease-in-out ${
-            hoveredTile && hoveredTile !== tile
-              ? 'opacity-50 blur-sm'
-              : 'opacity-100 blur-none'
-          }`}
-        >
-          <Tile tile={tile} />
+        <div key={index}>
+          <AnimatedTile
+            tile={tile}
+            isFlipped={flippedTiles.includes(index)}
+          />
         </div>
       ))}
     </div>
